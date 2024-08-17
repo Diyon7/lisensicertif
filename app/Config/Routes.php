@@ -8,6 +8,6 @@ use CodeIgniter\Router\RouteCollection;
 $routes->add('/', 'Home::index');
 
 
-$routes->group('/name', ['filter' => 'permission:guest'], static function ($routes) {
-    $routes->add('', 'Admin\Users::index');
+$routes->group('/pegawai', ['filter' => 'permission:pegawai'], static function ($routes) {
+    $routes->add('', 'Pegawai::index');
 });

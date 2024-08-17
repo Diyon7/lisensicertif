@@ -30,10 +30,29 @@ class PegawaiModel extends Model
         parent::__construct();
         $this->db = db_connect();
         $this->request = $request;
-        $this->dt = $this->db->table('skill_log');
+        $this->dt = $this->db->table('data_log');
     }
 
     protected function Logdata(array $data)
     {
+        $action = debug_backtrace()[1]['function'];
+        $message = "Action: $action, Data: " . json_encode($data);
+        $searchid = $this->dt->selectMax('id')
+            ->get()->getRowArray();
+
+        $id = $searchid['id'] + 1;
+
+        $data = [
+            'id' => $id,
+            'userid' => user()->username,
+            'logdate' => date('Y-m-d H:i:s'),
+            'module' => 'pegawai',
+            'tipe_log' => $action,
+            'namadata' => '',
+            'note' => $message
+        ];
+        $this->dt->insert($data);
     }
+
+    // protected function Writelog($message) {}
 }

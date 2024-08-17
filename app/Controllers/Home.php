@@ -20,10 +20,9 @@ class Home extends BaseController
     public function index(): string
     {
 
-        // $jumlahpegawai = $this->Pegawaimodel->selectCount('pegawai_id')->first();
         $jumlahpegawai = $this->Pegawaimodel->countAllResults();
-        // $jumlahsertif = $this->Certificationmodel->selectCount('id')->where('active', '1')->first();
         $jumlahsertif = $this->Certificationmodel->countAllResults();
+        $data = user()->username;
 
         if ($jumlahpegawai == '0') {
             $ppegawaiberlisensi = '0';
@@ -32,7 +31,7 @@ class Home extends BaseController
         }
 
         $data = [
-            'halaman' => 'ini halaman',
+            'halaman' => 'Statistik',
             'jmlpegawai' => $jumlahpegawai,
             'jmlcertif' => $jumlahsertif,
             'plisensi' => $ppegawaiberlisensi
