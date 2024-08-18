@@ -189,7 +189,7 @@
               </ul>
             </li>
             <?php
-            if (has_permission('pegawai')) :
+            if (has_permission('access-pegawai')) :
             ?>
               <li class="nav-item">
                 <a href="<?= site_url('pegawai') ?>" class="nav-link <?= $halaman == 'pegawai' ? 'active' : 'a' ?>">
@@ -283,7 +283,7 @@
             </li>
             <li class="nav-item">
               <a href="pages/kanban.html" class="nav-link">
-                <i class="nav-icon fas fa-columns"></i>
+                <i class="nav-icon fas fa-power-off"></i>
                 <p>
                   Kanban Board
                 </p>

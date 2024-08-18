@@ -8,6 +8,6 @@ use CodeIgniter\Router\RouteCollection;
 $routes->add('/', 'Home::index');
 
 
-$routes->group('/pegawai', ['filter' => 'permission:pegawai'], static function ($routes) {
+$routes->group('/pegawai', ['filter' => 'permission:access-pegawai'], static function ($routes) {
     $routes->add('', 'Pegawai::index');
 });
